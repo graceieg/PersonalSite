@@ -10,12 +10,12 @@ export const SOCIAL_LINKS = {
   email: 'mailto:gracearlayna@gmail.com'
 };
 
-export function formattedDate(date) {
+export function formattedDate(date: Date | string): string {
   // Create a new Date object if a string is passed
   const dateObj = typeof date === 'string' ? new Date(date) : date;
   
-  // Options for formatting the date
-  const options = { 
+  // Options for formatting the date with proper types
+  const options: Intl.DateTimeFormatOptions = { 
     year: 'numeric', 
     month: 'long', 
     day: 'numeric' 

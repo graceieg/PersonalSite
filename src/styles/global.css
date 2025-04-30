@@ -7,8 +7,9 @@
 	--gray: #888888;
 	--gray-light: #d4d4d4;
 	--gray-lighter: #faeaad;
-	--gray-light: #feffca;
+	--gray-light: #feffca;  /* This is duplicated with a different value */
 	--white: #ffffff;
+	/* ... */
 	
 	/* Font variables */
 	--font-heading: 'Silkscreen', sans-serif;
