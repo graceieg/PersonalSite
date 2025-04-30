@@ -184,275 +184,349 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
       </style>
 
       <!-- Animated Bird Journey Timeline Section -->
-      <section class="journey-timeline">
-        <h2 class="section-title pixel-heading">My Journey</h2>
-        
-        <div class="skyline-container">
-          <div class="sky-gradient"></div>
-          <div class="skyline-wrapper">
-            <div class="skyline-slice slice-1"></div>
-            <div class="skyline-slice slice-2"></div>
-            <div class="skyline-slice slice-3"></div>
-          </div>
-          
-          <div class="pixel-bird-container">
-            <div class="pixel-bird"></div>
-          </div>
-          
-          <div class="timeline-container">
-            <div class="timeline">
-              <div class="timeline-track"></div>
-              
-              <div class="timeline-point" data-position="0">
-                
-                <div class="timeline-content">Stillwater, MN</div>
-              </div>
-              
-              <div class="timeline-point" data-position="100">
-                
-                <div class="timeline-content">New Jersey</div>
-              </div>
-            </div>
-          </div>
+<section class="journey-timeline">
+  <h2 class="section-title pixel-heading">My Journey</h2>
+  
+  <div class="skyline-container">
+    <div class="sky-gradient"></div>
+    
+    <!-- Bird container -->
+    <div class="pixel-bird-container">
+      <div class="pixel-bird"></div>
+    </div>
+    
+    <div class="timeline-container">
+      <!-- Minnesota pixel art on the left -->
+      <div class="location-marker location-marker-left">
+        <div class="image-wrapper">
+          <img src="/minnesota-pixel.png" alt="Minnesota lighthouse" class="location-pixel" />
         </div>
-      </section>
+      </div>
+      
+      <div class="timeline">
+        <div class="timeline-track"></div>
+        <div class="timeline-dashes"></div>
+        
+        <div class="timeline-point" data-position="0">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">Stillwater, MN</div>
+        </div>
+        
+        <div class="timeline-point" data-position="100">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">New Brunswick, NJ</div>
+        </div>
+      </div>
+      
+      <!-- Rutgers pixel art on the right -->
+      <div class="location-marker location-marker-right">
+        <div class="image-wrapper">
+          <img src="/rutgers-pixel.png" alt="Rutgers building" class="location-pixel" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <style>
-        .journey-timeline {
-          padding: 4rem 0 6rem;
-          background-color: #f9f8ff;
-          text-align: center;
-          overflow: hidden;
-        }
-        
-        .section-title {
-          margin-bottom: 3rem;
-        }
-        
-        .skyline-container {
-          position: relative;
-          max-width: 1700px;
-          margin: 0 auto;
-          height: 200px;
-        }
-        
-        .sky-gradient {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(to bottom, #e5e0ff 0%, #f9f9ff 90%);
-          z-index: 0;
-        }
-        
-        .skyline-wrapper {
-          position: absolute;
-          bottom: 40px;
-          left: 0;
-          width: 100%;
-          height: 120px;
-          display: flex;
-          justify-content: space-between;
-          z-index: 1;
-        }
-        
-        .skyline-slice {
-          flex: 1;
-          height: 100%;
-          background-position: bottom center;
-          background-repeat: repeat-x;
-          background-size: auto 100%;
-        }
-        
-        .slice-1 {
-          background-image: url('/nyc-pixel-skyline1.png');
-        }
-        
-        .slice-2 {
-          background-image: url('/nyc-pixel-skyline1.png');
-        }
-        
-        .slice-3 {
-          background-image: url('/nyc-pixel-skyline1.png');
-        }
-        
-        .pixel-bird-container {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: 2;
-          pointer-events: none;
-        }
-        
-        .pixel-bird {
-  position: absolute;
-  width: 62px; /* Smaller bird size */
-  height: 62px; /* Smaller bird size */
-  background-size: contain;
-  background-repeat: no-repeat;
-  transform: translateX(-100%);
-  animation: 
-    fly-across 25s linear infinite,
-    fly-up-down 1s ease-in-out infinite alternate,
-    flap-wings 0.8s steps(4) infinite;
-}
-        
-        @keyframes fly-across {
-          0% {
-            left: -50px;
-            transform: translateY(0) scaleX(1);
-          }
-          45% {
-            left: 110%;
-            transform: translateY(0) scaleX(1);
-          }
-          50% {
-            left: 110%;
-            transform: translateY(0) scaleX(-1);
-          }
-          95% {
-            left: -50px;
-            transform: translateY(0) scaleX(-1);
-          }
-          100% {
-            left: -50px;
-            transform: translateY(0) scaleX(1);
-          }
-        }
-        
-        @keyframes fly-up-down {
-          0% {
-            top: 20px;
-          }
-          100% {
-            top: 0px;
-          }
-        }
-        
-       @keyframes flap-wings {
-  0% {
+<style>
+  /* Base styles */
+  .journey-timeline {
+    padding: 2rem 1rem 4rem;
+    background-color: #f9f8ff;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .section-title {
+    margin-bottom: 2rem;
+  }
+  
+  .skyline-container {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .sky-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #e5e0ff 0%, #f9f8ff 90%);
+    z-index: 0;
+  }
+  
+  /* Bird animation */
+  .pixel-bird-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  .pixel-bird {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 35%;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-image: url('/bird_frame1.png');
+    will-change: transform;
+    transform: translateZ(0);
+    animation: 
+      fly-across 15s linear infinite,
+      fly-up-down 1.5s ease-in-out infinite alternate,
+      flap-wings 0.7s steps(2) infinite;
   }
-  50% {
-    background-image: url('/bird_frame2.png');
+  
+  @keyframes fly-across {
+    0% {
+      left: 15%;
+      transform: translateZ(0) scaleX(1);
+    }
+    45% {
+      left: 80%;
+      transform: translateZ(0) scaleX(1);
+    }
+    50% {
+      left: 80%;
+      transform: translateZ(0) scaleX(-1);
+    }
+    95% {
+      left: 15%;
+      transform: translateZ(0) scaleX(-1);
+    }
+    100% {
+      left: 15%;
+      transform: translateZ(0) scaleX(1);
+    }
   }
-   75% {
-    background-image: url('/bird_frame3.png');
+  
+  @keyframes fly-up-down {
+    0% {
+      margin-top: 0px;
+    }
+    100% {
+      margin-top: -15px;
+    }
   }
-  100% {
-    background-image: url('/bird_frame1.png');
+  
+  @keyframes flap-wings {
+    0% {
+      background-image: url('/bird_frame1.png');
+    }
+    50% {
+      background-image: url('/bird_frame2.png');
+    }
+    100% {
+      background-image: url('/bird_frame1.png');
+    }
   }
-}
-        
-        .timeline-container {
-          position: absolute;
-          bottom: -30px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 80%;
-          max-width: 500px;
-          z-index: 3;
-        }
-        
-        .timeline {
-          position: relative;
-          height: 40px;
-          width: 100%;
-          margin: 0 auto;
-        }
-        
-        .timeline-track {
-          position: absolute;
-          top: 50%;
-          left: -10;
-          width: 100%;
-          height: 6px;
-          background: rgba(138, 99, 210, 0.5);
-          transform: translateY(-50%);
-          z-index: 1;
-        }
-        
-        .timeline-point {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 2;
-        }
-        
-        .timeline-point[data-position="0"] {
-          left: 0%;
-        }
-        
-        .timeline-point[data-position="100"] {
-          left: 100%;
-        }
-        
-        .timeline-marker {
-          position: relative;
-          width: 8px;
-          height: 8px;
-		  color:rgb(255, 121, 125);
-          border-radius: 50%;
-          transform: translateX(-50%);
-          box-shadow: 0 0 4px rgba(138, 99, 210, 0.3);
-          transition: all 0.2s ease;
-        }
-        
-        .timeline-content {
-          position: absolute;
-          top: -25px;
-          left: 0;
-          transform: translateX(-50%);
-          width: 100px;
-          text-align: center;
-          font-size: 0.8rem;
-          font-weight: 500;
-          color: #8a63d2;
-          opacity: 0.8;
-          transition: all 0.2s ease;
-          text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-        }
-        
-        .timeline-point:hover .timeline-marker {
-          background-color: #f5c5f7;
-          transform: translateX(-50%) scale(1.2);
-        }
-        
-        .timeline-point:hover .timeline-content {
-          opacity: 1;
-          font-weight: 600;
-        }
-        
-        @media (max-width: 768px) {
-          .journey-timeline {
-            padding: 3rem 0 5rem;
-          }
-          
-          .skyline-container {
-            height: 180px;
-          }
-          
-          .timeline-container {
-            width: 90%;
-          }
-          
-          .timeline {
-            height: 30px;
-          }
-          
-          .timeline-content {
-            font-size: 0.75rem;
-          }
-          
-          .pixel-bird {
-            width: 18px; /* Even smaller on mobile */
-            height: 18px; /* Even smaller on mobile */
-          }
-        }
-      </style>
+  
+  /* Timeline styles */
+  .timeline-container {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    max-width: 600px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .timeline {
+    position: relative;
+    height: 30px;
+    width: 100%;
+    margin: 0 auto;
+    flex: 1;
+    margin: 0 90px;
+  }
+  
+  .timeline-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #b19cd9, #d9a7ff, #f5c5f7);
+    transform: translateY(-50%);
+    z-index: 1;
+    border-radius: 3px;
+    box-shadow: 0 0 8px rgba(213, 184, 255, 0.5);
+  }
+  
+  .timeline-dashes {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    transform: translateY(-50%);
+    z-index: 2;
+    background-image: linear-gradient(to right, transparent 50%, rgba(255, 255, 255, 0.5) 50%);
+    background-size: 15px 1px;
+    background-repeat: repeat-x;
+    opacity: 0.6;
+  }
+  
+  .timeline-point {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+  
+  .timeline-point[data-position="0"] {
+    left: 0%;
+  }
+  
+  .timeline-point[data-position="100"] {
+    left: 100%;
+  }
+  
+  .timeline-dot {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    background-color: #f5c5f7;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    box-shadow: 0 0 8px rgba(245, 197, 247, 0.8);
+    border: 1px solid white;
+    transition: all 0.3s ease;
+  }
+  
+  .timeline-content {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    transform: translateX(-50%);
+    width: 100px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #8a63d2;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.9);
+    padding-bottom: 6px;
+    background-image: linear-gradient(to right, transparent 40%, #d9a7ff 40%, #d9a7ff 60%, transparent 60%);
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+  
+  .timeline-point:hover .timeline-dot {
+    transform: translateX(-50%) scale(1.3);
+    background-color: #d9a7ff;
+    box-shadow: 0 0 12px rgba(213, 184, 255, 0.9);
+  }
+  
+  .timeline-point:hover .timeline-content {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-3px);
+  }
+  
+  /* Location marker styling with fixed sizing */
+  .location-marker {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-top: -15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* New wrapper to maintain consistent sizing */
+  .image-wrapper {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .location-marker-left {
+    margin-right: 15px;
+  }
+
+  .location-marker-right {
+    margin-left: 15px;
+    background-color: transparent;
+  }
+
+  /* Fixed image styling for consistent size */
+  .location-pixel {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25));
+    transition: transform 0.3s ease;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+
+  .location-marker:hover {
+    transform: scale(1.1) translateY(-3px);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+  }
+  
+  @media (max-width: 768px) {
+    .skyline-container {
+      height: 180px;
+      width: 95%;
+    }
+    
+    .timeline-container {
+      width: 90%;
+      bottom: 40px;
+    }
+    
+    .timeline {
+      height: 25px;
+      margin: 0 60px;
+    }
+    
+    .timeline-content {
+      font-size: 0.75rem;
+      top: -28px;
+    }
+    
+    .pixel-bird {
+      width: 25px;
+      height: 25px;
+    }
+    
+    .location-marker, .image-wrapper {
+      width: 50px;
+      height: 50px;
+    }
+  }
+</style>
       
       <!-- Portfolio Section -->
       <section id="portfolio" class="portfolio-section" data-aos="fade-up">
