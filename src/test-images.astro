@@ -1,0 +1,21 @@
+---
+// src/pages/test-images.astro
+---
+
+<html>
+<head>
+  <title>Image Test</title>
+</head>
+<body>
+  <h1>Direct Image Test</h1>
+  <img src="/github.png" alt="GitHub Logo">
+  <div id="debug"></div>
+
+  <script>
+    // This will help us see if anything is modifying the image path
+    const img = document.querySelector('img');
+    document.getElementById('debug').textContent = 
+      `Original src: /github.png\nActual src: ${img.src}`;
+  </script>
+</body>
+</html>
