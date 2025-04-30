@@ -16,5 +16,8 @@
     "aos": "^2.3.4",
     "astro": "^5.7.4",
     "gsap": "^3.12.7"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
