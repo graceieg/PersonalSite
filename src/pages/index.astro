@@ -80,6 +80,16 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
     <main>
       <!-- Hero Section -->
       <section class="hero">
+      <div class="hero-time-icon">
+  <img
+    id="timeOfDayImage"
+    src="/time-morning.png"
+    alt="Time of Day Graphic"
+    width="64"
+    height="64"
+  />
+  <div id="dateTimeDisplay" class="pixel-clock"></div>
+</div>
         <div class="content-wrapper">
           <div class="profile-section">
             <div class="profile-image-container" data-aos="fade-right">
@@ -450,6 +460,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
           <h2 class="pixel-heading">Featured Projects</h2>
           <div class="portfolio-grid">
             <article class="portfolio-card" data-aos="fade-up">
+            
               <img src="/MyShell-portfolio.png" alt="My Shell" class="portfolio-image" width="400" height="200" />
               <div class="portfolio-content">
                 <h3 class="portfolio-title pixel-heading">My Shell</h3>
@@ -462,20 +473,24 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
               </div>
             </article>
 
-            <article class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
+            <article class="portfolio-card" data-aos="fade-up">
               <img src="/FacialRec-portfolio.png" alt="Facial Recognition" class="portfolio-image" width="400" height="200" />
               <div class="portfolio-content">
-                <h3 class="portfolio-title pixel-heading">Facial Recognition</h3>
-                <p>This Python project uses computer vision and the face_recognition library to detect and recognize faces via webcam and mark attendance automatically in a CSV file.</p>
-                <div class="tech-stack">
-                  <span class="tech-badge">Machine Learning</span>
-                  <span class="tech-badge">Python</span>
-                  <span class="tech-badge">OpenCV</span>
-                </div>
+              <h3 class="portfolio-title pixel-heading">
+                <a href="/blog/facial-recognition" class="portfolio-link">Facial Recognition</a>
+              </h3>
+              <p>This Python project uses computer vision and the face_recognition library to detect and recognize faces via webcam and mark attendance automatically in a CSV file.</p>
+                 <div class="tech-stack">
+                 <span class="tech-badge">Machine Learning</span>
+                 <span class="tech-badge">Python</span>
+                 <span class="tech-badge">OpenCV</span>
               </div>
-            </article>
+            </div>
+          </article>
+
 
             <article class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
+            
               <img src="/blog-placeholder-3.jpg" alt="AI Chat Application" class="portfolio-image" width="400" height="200" />
               <div class="portfolio-content">
                 <h3 class="portfolio-title pixel-heading">AI Chat Application</h3>
@@ -518,7 +533,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
           left: 0;
           width: 100%;
           height: 100%;
-          background-image: url('/pixel-sunset.jpg');
+         
           background-size: cover;
           background-position: center;
           z-index: 0;
@@ -1008,7 +1023,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
   birdElement.style.backgroundColor = 'transparent';
   birdElement.style.borderRadius = '0';
 	   }
-        testBirdImage.src = '/bird_frame_1.png';
+        testBirdImage.src = '/bird_frame1.png';
         
         // Check if skyline images load correctly
         const testSkylineImage = new Image();

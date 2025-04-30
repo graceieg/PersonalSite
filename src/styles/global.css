@@ -7,6 +7,7 @@
 	--gray: #888888;
 	--gray-light: #d4d4d4;
 	--gray-lighter: #faeaad;
+	--gray-light: #feffca;
 	--white: #ffffff;
 	
 	/* Font variables */
@@ -705,3 +706,26 @@
   .pixel-bird.fast-flight {
 	animation-duration: 20s, 1.5s, 0.3s; /* Faster flight, faster flapping */
   }
+  .hero-time-icon {
+	position: absolute;
+	top: 3rem;
+	right: 3rem;
+	text-align: center;
+	z-index: 10;
+  }
+  
+  .hero-time-icon img {
+	transition: opacity 0.3s ease-in-out;
+	image-rendering: pixelated;
+  }
+  
+  .pixel-clock {
+	font-family: 'Silkscreen', 'CascadiaCode', monospace;
+	font-size: 0.75rem;
+	color: var(--black);
+	text-align: center;
+	margin-top: 0.25rem;
+	line-height: 1;
+  }
+  
+  
