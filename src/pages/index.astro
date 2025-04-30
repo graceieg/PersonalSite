@@ -2,48 +2,1031 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/css/regular.css">
+    
+    <style>
+      /* Petal styling for different types */
+      .petal {
+        position: absolute;
+        pointer-events: none;
+        opacity: var(--opacity, 0.7);
+        z-index: 5;
+        animation: floatPetal var(--duration) ease-in-out var(--delay) forwards;
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+      }
+      
+      .petal.circular {
+        width: 15px;
+        height: 15px;
+        background-color: rgba(245, 197, 247, 0.9);
+        border-radius: 50%;
+      }
+      
+      .petal.blossom {
+        width: 12px;
+        height: 12px;
+        background-color: rgba(245, 170, 203, 0.9);
+        border-radius: 12px 0 12px 0;
+        transform-origin: center;
+      }
+      
+      @keyframes floatPetal {
+        0% {
+          top: var(--start-y);
+          left: var(--start-x);
+          opacity: 0;
+          transform: scale(var(--scale)) rotate(0deg);
+        }
+        10% {
+          opacity: var(--opacity, 0.7);
+        }
+        90% {
+          opacity: var(--opacity, 0.7);
+        }
+        100% {
+          top: var(--end-y);
+          left: var(--end-x);
+          opacity: 0;
+          transform: scale(var(--scale)) rotate(var(--rotation));
+        }
+      }
+
+      /* Enable bird parallax effect */
+      .parallax-scroll .pixel-bird {
+        transition: transform 0.1s ease-out;
+      }
+
+      @media (min-width: 768px) {
+        .journey-timeline.in-view .pixel-bird {
+          animation-play-state: running;
+        }
+        
+        .journey-timeline:not(.in-view) .pixel-bird {
+          animation-play-state: paused;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="content-wrapper">
+          <div class="profile-section">
+            <div class="profile-image-container" data-aos="fade-right">
+              <img 
+                src="/profile-formal.jpg"
+                alt="Grace Giebel"
+                class="profile-image"
+                width="200"
+                height="200"
+              />
+            </div>
+            <div class="profile-details" data-aos="fade-left">
+              <h1 class="pixel-heading">Grace Giebel</h1>
+              <p class="subtitle">Software Engineering & UX Design</p>
+              
+              <div class="education-section">
+                <div>
+                  <h3>Rutgers University</h3>
+                  <p>Computer Science</p>
+                  <p>Critical Intelligence and Japanese</p>
+                </div>
+              </div>
+
+              <div class="info-blocks" data-aos="fade-up">
+
+  			<div class="block">
+   		 <h4>📧 Contact</h4>
+    	<p>
+     	 <a href="mailto:gracearlayna@gmail.com">gracearlayna@gmail.com</a><br />
+     	 <a href="tel:+16517558371">651-755-8371</a>
+   	 </p>
+  	</div>
+  	<div class="block">
+  	  <h4>🎓 Major</h4>
+   	 <p>Computer Science, Critical Intelligence (JP)</p>
+ 	 </div>
+ 	 <div class="block">
+   	 <h4>🧠 UX & SWE</h4>
+   	 <p>UX meets functionality + code that clicks.</p>
+  	</div>
+  	<div class="block">
+    	<h4>🏛️ Rutgers</h4>
+    	<p>Junior 2026 Grad<br/>WiCS, Club Volleyball, Rutgers Art and Design </p>
+  	</div>
+	</div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>
+        /* Hero section with NYC skyline */
+        .hero {
+          position: relative;
+          padding: 5rem 0 3rem;
+          background-color: var(--gray-lighter);
+          overflow: hidden;
+        }
+
+        /* NYC Skyline background */
+        .hero::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 180px;
+          background-image: url('/pixel-sunset.png');
+          background-size: contain;
+          background-position: bottom center;
+          background-repeat: repeat-x;
+          opacity: 0.15;
+          z-index: 0;
+          pointer-events: none;
+        }
+
+        /* Ensure the content stays above the skyline background */
+        .profile-section {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          gap: 3.5rem;
+        }
+
+        @media (max-width: 768px) {
+          .hero::after {
+            height: 120px;
+          }
+        }
+      </style>
+
+      <!-- Animated Bird Journey Timeline Section -->
+      <section class="journey-timeline">
+        <h2 class="section-title pixel-heading">My Journey</h2>
+        
+        <div class="skyline-container">
+          <div class="sky-gradient"></div>
+          <div class="skyline-wrapper">
+            <div class="skyline-slice slice-1"></div>
+            <div class="skyline-slice slice-2"></div>
+            <div class="skyline-slice slice-3"></div>
+          </div>
+          
+          <div class="pixel-bird-container">
+            <div class="pixel-bird"></div>
+          </div>
+          
+          <div class="timeline-container">
+            <div class="timeline">
+              <div class="timeline-track"></div>
+              
+              <div class="timeline-point" data-position="0">
+                
+                <div class="timeline-content">Stillwater, MN</div>
+              </div>
+              
+              <div class="timeline-point" data-position="100">
+                
+                <div class="timeline-content">New Jersey</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>
+        .journey-timeline {
+          padding: 4rem 0 6rem;
+          background-color: #f9f8ff;
+          text-align: center;
+          overflow: hidden;
+        }
+        
+        .section-title {
+          margin-bottom: 3rem;
+        }
+        
+        .skyline-container {
+          position: relative;
+          max-width: 1700px;
+          margin: 0 auto;
+          height: 200px;
+        }
+        
+        .sky-gradient {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to bottom, #e5e0ff 0%, #f9f9ff 90%);
+          z-index: 0;
+        }
+        
+        .skyline-wrapper {
+          position: absolute;
+          bottom: 40px;
+          left: 0;
+          width: 100%;
+          height: 120px;
+          display: flex;
+          justify-content: space-between;
+          z-index: 1;
+        }
+        
+        .skyline-slice {
+          flex: 1;
+          height: 100%;
+          background-position: bottom center;
+          background-repeat: repeat-x;
+          background-size: auto 100%;
+        }
+        
+        .slice-1 {
+          background-image: url('/nyc-pixel-skyline1.png');
+        }
+        
+        .slice-2 {
+          background-image: url('/nyc-pixel-skyline1.png');
+        }
+        
+        .slice-3 {
+          background-image: url('/nyc-pixel-skyline1.png');
+        }
+        
+        .pixel-bird-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 2;
+          pointer-events: none;
+        }
+        
+        .pixel-bird {
+  position: absolute;
+  width: 62px; /* Smaller bird size */
+  height: 62px; /* Smaller bird size */
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateX(-100%);
+  animation: 
+    fly-across 25s linear infinite,
+    fly-up-down 1s ease-in-out infinite alternate,
+    flap-wings 0.8s steps(4) infinite;
+}
+        
+        @keyframes fly-across {
+          0% {
+            left: -50px;
+            transform: translateY(0) scaleX(1);
+          }
+          45% {
+            left: 110%;
+            transform: translateY(0) scaleX(1);
+          }
+          50% {
+            left: 110%;
+            transform: translateY(0) scaleX(-1);
+          }
+          95% {
+            left: -50px;
+            transform: translateY(0) scaleX(-1);
+          }
+          100% {
+            left: -50px;
+            transform: translateY(0) scaleX(1);
+          }
+        }
+        
+        @keyframes fly-up-down {
+          0% {
+            top: 20px;
+          }
+          100% {
+            top: 0px;
+          }
+        }
+        
+       @keyframes flap-wings {
+  0% {
+    background-image: url('/bird_frame1.png');
+  }
+  50% {
+    background-image: url('/bird_frame2.png');
+  }
+   75% {
+    background-image: url('/bird_frame3.png');
+  }
+  100% {
+    background-image: url('/bird_frame1.png');
+  }
+}
+        
+        .timeline-container {
+          position: absolute;
+          bottom: -30px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80%;
+          max-width: 500px;
+          z-index: 3;
+        }
+        
+        .timeline {
+          position: relative;
+          height: 40px;
+          width: 100%;
+          margin: 0 auto;
+        }
+        
+        .timeline-track {
+          position: absolute;
+          top: 50%;
+          left: -10;
+          width: 100%;
+          height: 6px;
+          background: rgba(138, 99, 210, 0.5);
+          transform: translateY(-50%);
+          z-index: 1;
+        }
+        
+        .timeline-point {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 2;
+        }
+        
+        .timeline-point[data-position="0"] {
+          left: 0%;
+        }
+        
+        .timeline-point[data-position="100"] {
+          left: 100%;
+        }
+        
+        .timeline-marker {
+          position: relative;
+          width: 8px;
+          height: 8px;
+		  color:rgb(255, 121, 125);
+          border-radius: 50%;
+          transform: translateX(-50%);
+          box-shadow: 0 0 4px rgba(138, 99, 210, 0.3);
+          transition: all 0.2s ease;
+        }
+        
+        .timeline-content {
+          position: absolute;
+          top: -25px;
+          left: 0;
+          transform: translateX(-50%);
+          width: 100px;
+          text-align: center;
+          font-size: 0.8rem;
+          font-weight: 500;
+          color: #8a63d2;
+          opacity: 0.8;
+          transition: all 0.2s ease;
+          text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+        
+        .timeline-point:hover .timeline-marker {
+          background-color: #f5c5f7;
+          transform: translateX(-50%) scale(1.2);
+        }
+        
+        .timeline-point:hover .timeline-content {
+          opacity: 1;
+          font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+          .journey-timeline {
+            padding: 3rem 0 5rem;
+          }
+          
+          .skyline-container {
+            height: 180px;
+          }
+          
+          .timeline-container {
+            width: 90%;
+          }
+          
+          .timeline {
+            height: 30px;
+          }
+          
+          .timeline-content {
+            font-size: 0.75rem;
+          }
+          
+          .pixel-bird {
+            width: 18px; /* Even smaller on mobile */
+            height: 18px; /* Even smaller on mobile */
+          }
+        }
+      </style>
+      
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="portfolio-section" data-aos="fade-up">
+        <div class="content-wrapper">
+          <h2 class="pixel-heading">Featured Projects</h2>
+          <div class="portfolio-grid">
+            <article class="portfolio-card" data-aos="fade-up">
+              <img src="/MyShell-portfolio.png" alt="My Shell" class="portfolio-image" width="400" height="200" />
+              <div class="portfolio-content">
+                <h3 class="portfolio-title pixel-heading">My Shell</h3>
+                <p>A simple command-line shell designed to let users execute commands interactively or through batch files. </p>
+                <div class="tech-stack">
+                  <span class="tech-badge">C Programming</span>
+                  <span class="tech-badge">Unix/Linux</span>
+                  <span class="tech-badge">POSIX</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
+              <img src="FacialRec-portfolio.png" alt="Facial Recognition" class="portfolio-image" width="400" height="200" />
+              <div class="portfolio-content">
+                <h3 class="portfolio-title pixel-heading">Facial Recognition</h3>
+                <p>This Python project uses computer vision and the face_recognition library to detect and recognize faces via webcam and mark attendance automatically in a CSV file.</p>
+                <div class="tech-stack">
+                  <span class="tech-badge">Machine Learning</span>
+                  <span class="tech-badge">Python</span>
+                  <span class="tech-badge">OpenCV</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
+              <img src="/blog-placeholder-3.jpg" alt="AI Chat Application" class="portfolio-image" width="400" height="200" />
+              <div class="portfolio-content">
+                <h3 class="portfolio-title pixel-heading">AI Chat Application</h3>
+                <p>Real-time chat app with AI-powered responses and natural language processing.</p>
+                <div class="tech-stack">
+                  <span class="tech-badge">Next.js</span>
+                  <span class="tech-badge">OpenAI</span>
+                  <span class="tech-badge">WebSocket</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="dreaming-big" class="dreaming-big-section" data-aos="fade">
+        <div class="pixel-bg"></div>
+        <div class="cherry-tree-container">
+          <div class="falling-petals"></div>
+        </div>
+        <div class="dreaming-content">
+          <h2 class="dream-title pixel-heading">“The best way to predict the future is to invent it.”</h2>
+          <p class="dream-subtitle">— Alan Kay</p>
+        </div>
+      </section>
+
+      <style>
+        .dreaming-big-section {
+          position: relative;
+          background-color: transparent;
+          color: white;
+          padding: 8rem 0;
+          overflow: hidden;
+          text-align: center;
+        }
+        
+        .pixel-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url('/pixel-sunset.jpg');
+          background-size: cover;
+          background-position: center;
+          z-index: 0;
+          opacity: 0.95;
+        }
+        
+        .cherry-tree-container {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          pointer-events: none;
+        }
+        
+        .cherry-tree-container::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 300px;
+          height: 300px;
+          background-image: url('/cherry-blossom.png');
+          background-size: contain;
+          background-position: bottom center;
+          background-repeat: no-repeat;
+          z-index: 1;
+          opacity: 0.7;
+        }
+        
+        .falling-petals {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          z-index: 2;
+        }
+        
+        .dreaming-content {
+          position: relative;
+          z-index: 3;
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+        
+        .dream-title {
+          margin-bottom: 1rem;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+          color: white;
+        }
+        
+        .dream-subtitle {
+          font-size: 1.2rem;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+          .dreaming-big-section {
+            padding: 6rem 0;
+          }
+          
+          .cherry-tree-container::after {
+            width: 200px;
+            height: 200px;
+          }
+        }
+      </style>
+
+<!-- Redesigned "Let's Connect" Section -->
+<section id="hang-with-me" class="connect-section" data-aos="fade-up">
+  <div class="connect-wrapper">
+    <div class="connect-content">
+      <div class="text-content" data-aos="fade-right">
+        <h2 class="pixel-heading gradient-heading">Let's Connect!</h2>
+        <p>I'm always excited to collaborate and meet fellow enthusiasts. Whether you have questions about my work or just want to chat about tech, I'd love to hear from you! 😊</p>
+        
+        <div class="social-links">
+          <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener" class="social-button">
+            <span class="social-icon"><img src="/github.png" alt="GitHub logo" /></span>
+            <span>GitHub</span>
+          </a>
+          <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener" class="social-button">
+            <span class="social-icon"><img src="/linkedinlogo.jpg" alt="LinkedIn logo" /></span>
+            <span>LinkedIn</span>
+          </a>
+          <a href={SOCIAL_LINKS.email} target="_blank" rel="noopener" class="social-button">
+            <span class="social-icon"><img src="/emaillogo.jpg" alt="Email logo" /></span>
+            <span>Email</span>
+          </a>
+        </div>
+      </div>
+            
+            <div class="image-content" data-aos="fade-left">
+  <div class="image-frame">
+    <p class="image-caption">Just hanging out...</p>
+    <img 
+      src="/profile-casual.jpg"
+      alt="Grace in a hammock"
+      class="casual-image"
+      width="250"
+      height="167"
+    />
+    <div class="floating-petals"></div>
+  </div>
+</div>
+        </div>
+      </section>
+
+      <style>
+        /* Updated Connect Section with smaller image */
+        .connect-section {
+          background: linear-gradient(to right, #e0c3fc, #f5c5f7);
+          padding: 4rem 0;
+        }
+        
+        .connect-wrapper {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+        
+        .connect-content {
+          display: flex;
+          align-items: center;
+          gap: 4rem;
+        }
+        
+        .text-content {
+          flex: 1;
+        }
+        
+        .gradient-heading {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .gradient-heading::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -5px;
+          width: 100%;
+          height: 4px;
+          background: linear-gradient(to right, #8a63d2, #f5c5f7);
+          border-radius: 2px;
+        }
+        
+        .social-links {
+          display: flex;
+          gap: 1rem;
+          margin-top: 2rem;
+        }
+        
+        .social-button {
+          display: flex;
+          align-items: center;
+          padding: 0.75rem 1.5rem;
+          background-color: white;
+          border-radius: 50px;
+          text-decoration: none;
+          color: #333;
+          font-weight: 500;
+          box-shadow: 0 4px 10px rgba(138, 99, 210, 0.1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          border: 2px solid #8a63d2;
+        }
+        
+        .social-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 28px;
+          height: 28px;
+          background-color: #8a63d2;
+          border-radius: 50%;
+          margin-right: 10px;
+          color: white;
+        }
+        
+        .social-icon i {
+          font-size: 16px;
+        }
+        
+        .image-content {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+        }
+        
+        .image-frame {
+          position: relative;
+          background: white;
+          padding: 0.75rem;
+          border-radius: 8px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+          overflow: hidden;
+          max-width: 250px;
+        }
+        
+        .casual-image {
+          width: 100%;
+          height: auto;
+          border-radius: 4px;
+          display: block;
+        }
+        
+        .floating-petals {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          z-index: 2;
+        }
+        
+        @media (max-width: 768px) {
+          .connect-content {
+            flex-direction: column;
+            text-align: center;
+          }
+          
+          .social-links {
+            justify-content: center;
+          }
+          
+          .image-frame {
+            margin: 0 auto;
+            max-width: 200px;
+          }
+        }
+      </style>
+
+      <section class="testimonials">
+        <div class="content-wrapper">
+          <h2 class="pixel-heading">What People Say</h2>
+          <div class="testimonial-card" data-aos="fade-up">
+            <p class="testimonial-text">"We had the pleasure of hosting Grace as an intern during the summer of 2024. Throughout her time with us, Grace collaborated with a multidisciplinary team of mechanical, electrical, test, and aerospace engineers to support research on CubeSat payload design and the development of statement of work documentation. She consistently demonstrated adaptability, working effectively within a diverse team environment, and contributed fresh, innovative ideas to the project."</p>
+            <p class="testimonial-author">- Josh Hutchingson, ION Corporation</p>
+          </div>
+          
+          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+            <p class="testimonial-text">"Working with Grace was a pleasure. Her ability to combine technical expertise with creative design thinking produced outstanding results."</p>
+            <p class="testimonial-author">- Sarah Johnson, Tech Lead</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+    
+    <script>
+      import 'aos/dist/aos.css';
+      import AOS from 'aos';
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      
+      gsap.registerPlugin(ScrollTrigger);
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 100
+        });
+
+        // Parallax effect for pixel background
+        gsap.to('.pixel-bg', {
+          yPercent: 30,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.dreaming-big-section',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        // Animation for pixel-heading titles
+        gsap.utils.toArray('.pixel-heading').forEach(heading => {
+          gsap.from(heading, {
+            duration: 0.5,
+            opacity: 0,
+            y: 10,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: heading,
+              start: 'top bottom-=100',
+              toggleActions: 'play none none none'
+            }
+          });
+        });
+
+        // Function to check if element is in view
+        const isInViewport = (element) => {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+          );
+        };
+
+        // Add parallax effect for bird animation
+        const addParallaxEffect = () => {
+          const journeySection = document.querySelector('.journey-timeline');
+          const pixelBird = document.querySelector('.pixel-bird');
+          
+          if (!journeySection || !pixelBird) return;
+          
+          // Add class to enable parallax
+          journeySection.classList.add('parallax-scroll');
+          
+          // Check if section is in view
+          const checkInView = () => {
+            if (isInViewport(journeySection)) {
+              journeySection.classList.add('in-view');
+            } else {
+              journeySection.classList.remove('in-view');
+            }
+          };
+          
+          // Initial check
+          checkInView();
+          
+          // Add slight movement on mouse move
+          journeySection.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+            
+            // Subtle movement based on mouse position
+            pixelBird.style.transform = `translateY(${mouseY * 10}px)`;
+          });
+          
+          // Check on scroll
+          window.addEventListener('scroll', checkInView);
+        };
+
+        // Enhanced falling petals for dreaming section
+        const createEnhancedPetals = () => {
+          const petalsContainer = document.querySelector('.falling-petals');
+          if (!petalsContainer) return;
+          
+          const createPetal = () => {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            
+            // Randomize petal type (circular or cherry blossom shaped)
+            const petalType = Math.random() > 0.5 ? 'circular' : 'blossom';
+            petal.classList.add(petalType);
+            
+            // Random starting position across the entire width
+            const startX = Math.random() * 100;
+            const startY = -10; // Start above the container
+            
+            // Random movement pattern
+            const sway = 30 + Math.random() * 70;
+            const fallDistance = 120 + Math.random() * 30;
+            
+            // End position
+            const endX = startX + (Math.random() > 0.5 ? sway : -sway);
+            const endY = startY + fallDistance;
+            
+            // Randomize sizes for depth effect
+            const scale = 0.3 + Math.random() * 0.7;
+            const rotation = Math.random() * 720 - 360;
+            
+            // Randomize opacity
+            const opacity = 0.5 + Math.random() * 0.5;
+            
+            // Randomize duration
+            const duration = 8 + Math.random() * 7;
+            
+            // Set all the custom properties
+            petal.style.setProperty('--start-x', `${startX}%`);
+            petal.style.setProperty('--start-y', `${startY}%`);
+            petal.style.setProperty('--end-x', `${endX}%`);
+            petal.style.setProperty('--end-y', `${endY}%`);
+            petal.style.setProperty('--scale', scale);
+            petal.style.setProperty('--rotation', `${rotation}deg`);
+            petal.style.setProperty('--opacity', opacity);
+            petal.style.setProperty('--delay', `${Math.random() * 5}s`);
+            petal.style.setProperty('--duration', `${duration}s`);
+            
+            petalsContainer.appendChild(petal);
+            
+            petal.addEventListener('animationend', () => {
+              petal.remove();
+            });
+          };
+          
+          // Create initial petals (many more for a fuller effect)
+          for (let i = 0; i < 30; i++) {
+            createPetal();
+          }
+          
+          // Create new petals frequently
+          setInterval(createPetal, 300);
+        };
+
+        // Original floating petals for the connect section
+        const petalsContainer = document.querySelector('.floating-petals');
+        if (petalsContainer) {
+          const createPetal = () => {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+
+			// Calculate angle in radians (50 degrees)
+            const angleRad = (50 * Math.PI) / 180;
+			// Start position (random across top right quadrant)
+            const startX = 50 + Math.random() * 50; // Start from 50-100% of width
+            const startY = -10; // Start above the container
+            
+            // Calculate end position based on 50° angle
+            const distance = 200; // Total travel distance
+            const deltaX = Math.cos(angleRad) * distance;
+            const deltaY = Math.sin(angleRad) * distance;
+            
+            // End position
+            const endX = startX + deltaX;
+            const endY = startY + deltaY;
+            
+            // Randomize sizes for depth effect
+            const scale = 0.6 + Math.random() * 0.4;
+            
+            petal.style.setProperty('--start-x', `${startX}%`);
+            petal.style.setProperty('--start-y', `${startY}%`);
+            petal.style.setProperty('--end-x', `${endX}%`);
+            petal.style.setProperty('--end-y', `${endY}%`);
+            petal.style.setProperty('--scale', scale);
+            petal.style.setProperty('--delay', `${Math.random() * 3}s`);
+            petal.style.setProperty('--duration', `${6 + Math.random() * 4}s`);
+            petal.style.setProperty('--rotation', `${Math.random() * 720 - 360}deg`);
+            
+            petalsContainer.appendChild(petal);
+            
+            petal.addEventListener('animationend', () => {
+              petal.remove();
+            });
+          };
+
+          // Create initial petals
+          for (let i = 0; i < 8; i++) {
+            createPetal();
+          }
+
+          // Create new petals periodically
+          setInterval(createPetal, 600);
+        }
+        
+        // Social buttons hover effect
+        const socialButtons = document.querySelectorAll('.social-button');
+        socialButtons.forEach(button => {
+          button.addEventListener('mouseenter', () => {
+            gsap.to(button, {
+              y: -5,
+              boxShadow: '0 8px 15px rgba(138, 99, 210, 0.2)',
+              duration: 0.3
+            });
+          });
+          
+          button.addEventListener('mouseleave', () => {
+            gsap.to(button, {
+              y: 0,
+              boxShadow: '0 4px 10px rgba(138, 99, 210, 0.1)',
+              duration: 0.3
+            });
+          });
+        });
+
+        // Check if images load correctly and apply fallbacks if needed
+        const testBirdImage = new Image();
+        testBirdImage.onload = () => {
+          console.log('Bird image loaded successfully');
+        };
+       testBirdImage.onerror = () => {
+  console.warn('Bird image failed to load, applying fallback styles');
+  const birdElement = document.querySelector('.pixel-bird');
+  // Either remove these styles completely
+  // OR apply a transparent background instead of purple
+  birdElement.style.backgroundColor = 'transparent';
+  birdElement.style.borderRadius = '0';
+	   }
+        testBirdImage.src = '/bird_frame_1.png';
+        
+        // Check if skyline images load correctly
+        const testSkylineImage = new Image();
+        testSkylineImage.onload = () => {
+          console.log('Skyline image loaded successfully');
+        };
+        testSkylineImage.onerror = () => {
+          console.warn('Skyline image failed to load, applying fallback styles');
+          document.querySelectorAll('.skyline-slice').forEach(slice => {
+            slice.style.backgroundColor = '#365486';
+          });
+        };
+        testSkylineImage.src = '/nyc-pixel-skyline1.png';
+        
+        // Call animation functions
+        createEnhancedPetals();
+        addParallaxEffect();
+      });
+    </script>
+  </body>
 </html>

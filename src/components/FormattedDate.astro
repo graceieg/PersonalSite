@@ -1,17 +1,33 @@
 ---
+/**
+ * FormattedDate.astro
+ * A component to display dates in a consistent format across the site.
+ */
+
 interface Props {
-	date: Date;
+  date: string | Date;
+}
+
+// Format dates in a consistent way across the site
+function formattedDate(date: string | Date): string {
+  // Create a new Date object if a string is passed
+  const dateObj = typeof date === 'string' ? new Date(date) : date;
+
+  // Options for formatting the date
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+
+  // Return formatted date
+  return dateObj.toLocaleDateString('en-US', options);
 }
 
 const { date } = Astro.props;
 ---
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
+<time datetime={new Date(date).toISOString()}>
+  {formattedDate(date)}
 </time>
+
