@@ -5,6 +5,12 @@ pubDate: "2025-04-29"
 heroImage: "/FacialRec-portfolio.png"
 ---
 
+# Facial Recognition Attendance System
+
+*An automated face recognition system built with Python and OpenCV*
+
+*Published: April 29, 2025*
+
 This project implements a facial recognition system that **automatically marks attendance** using your webcam and a set of reference face images. It’s a great entry point into **computer vision** and **real-time facial analysis** with Python.
 
 ---
@@ -29,7 +35,7 @@ Using the `face_recognition` library and OpenCV, the system scans a webcam feed 
 - **Python 3**
 - [`face_recognition`](https://github.com/ageitgey/face_recognition)
 - **OpenCV**
-- **NumPy**
+- **NumPy** for data handling
 - **CSV File Handling**
 
 ---
@@ -62,5 +68,4 @@ Using the `face_recognition` library and OpenCV, the system scans a webcam feed 
 </code></pre>
 
 
-
-python AttendanceProject.py
+---
