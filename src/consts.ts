@@ -1,8 +1,8 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'Grace Giebel - Software Engineer & UX Designer';
-export const SITE_DESCRIPTION = 'Personal portfolio showcasing software engineering and UX design work';
+export const SITE_TITLE = 'Grace Giebel - Software Engineer & UX Design';
+export const SITE_DESCRIPTION = 'Personal portfolio';
 
 export const SOCIAL_LINKS = {
   github: 'https://github.com/graceieg',

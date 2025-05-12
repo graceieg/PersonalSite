@@ -218,6 +218,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
         </div>
       </div>
       
+      
       <!-- Rutgers pixel art on the right -->
       <div class="location-marker location-marker-right">
         <div class="image-wrapper">
@@ -525,7 +526,37 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
       width: 50px;
       height: 50px;
     }
+    /* Simple fix for timeline labels */
+@media (max-width: 768px) {
+  /* Increase the width of the timeline container to give more space */
+  .timeline-container {
+    width: 100%;
   }
+  
+  /* Make the timeline markers display different background colors */
+  .timeline-content {
+    /* Ensure text shows fully */
+    width: auto;
+    min-width: 120px; /* Wider to fit "New Brunswick, NJ" */
+    max-width: 120px; /* Limit max width */
+    white-space: normal; /* Allow wrapping if needed */
+    background-color: white;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.7rem; /* Slightly smaller font */
+    box-shadow: 0 1px 3px rgba(138, 99, 210, 0.3);
+  }
+  
+  /* Position the left marker further left */
+  .timeline-point[data-position="0"] {
+    left: -5%; /* Move slightly left of 0% */
+  }
+  
+  /* Position the right marker further right */
+  .timeline-point[data-position="100"] {
+    left: 105%; /* Move slightly right of 100% */
+  }
+}
 </style>
       
       <!-- Portfolio Section -->
