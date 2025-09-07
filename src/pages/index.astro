@@ -108,8 +108,8 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
               <div class="education-section">
                 <div>
                   <h3>Rutgers University</h3>
-                  <p>Computer Science</p>
-                  <p>Critical Intelligence and Japanese</p>
+                  <p> Bachelor's Degree in Computer Science</p>
+                  <p> Minor in Critical Intelligence and Japanese</p>
                 </div>
               </div>
 
@@ -295,23 +295,15 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
   @keyframes fly-across {
     0% {
       left: 15%;
-      transform: translateZ(0) rotate(0deg);
-    }
-    45% {
-      left: 80%;
-      transform: translateZ(0) rotate(0deg);
+      transform: translateZ(0) scaleX(1);
     }
     50% {
-      left: 80%;
-      transform: translateZ(0) rotate(180deg);
-    }
-    95% {
-      left: 15%;
-      transform: translateZ(0) rotate(180deg);
+     left: 80%;
+     transform: translateZ(0) scaleX(-1);
     }
     100% {
-      left: 15%;
-      transform: translateZ(0) rotate(0deg);
+    left: 15%;
+     transform: translateZ(0) scaleX(1);
     }
   }
   
