@@ -165,6 +165,7 @@
   }
   
   .profile-image-container {
+	margin-top: -200px;
 	flex-shrink: 0;
 	width: 200px;
 	height: 200px;
@@ -184,6 +185,8 @@
   
   .profile-details {
 	flex: 1;
+	float: right;
+	width: 50%
   }
   
   .subtitle {
@@ -617,6 +620,10 @@
 	.profile-image {
 	  width: 180px;
 	  height: 180px;
+	}
+
+	.profile-image-container {
+	padding-top: 100px; /* adjust the value to your liking */
 	}
 	
 	.subtitle {
