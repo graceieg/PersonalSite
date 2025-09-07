@@ -148,9 +148,17 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
         /* Hero section with NYC skyline */
         .hero {
           position: relative;
-          padding: 5rem 0 3rem;
+          padding: 7rem 0 3rem;
           background-color: var(--gray-lighter);
-          overflow: hidden;
+          overflow: visible;
+          margin-top: 2.5rem;
+        }
+        
+        @media (min-width: 1024px) {
+          .hero {
+            padding: 4rem 0 3rem;
+            margin-top: 0;
+          }
         }
 
         /* NYC Skyline background */
@@ -175,11 +183,40 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
           position: relative;
           z-index: 1;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 3.5rem;
+          padding-top: 1.5rem;
+        }
+        
+        @media (min-width: 1024px) {
+          .profile-section {
+            align-items: center;
+            padding-top: 0;
+          }
         }
 
         @media (max-width: 768px) {
+          .hero {
+            padding: 5rem 1.5rem 3rem;
+            text-align: center;
+          }
+          
+          .profile-section {
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            text-align: center;
+          }
+          
+          .profile-details {
+            width: 100%;
+            max-width: 100%;
+          }
+          
+          .profile-image-container {
+            margin: 0 auto 1rem;
+          }
+          
           .hero::after {
             height: 120px;
           }
@@ -201,14 +238,13 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
     <div class="timeline-container">
       <!-- Minnesota pixel art on the left -->
       <div class="location-marker location-marker-left">
-        <div class="image-wrapper">
-          <img src="/minnesota-pixel.png" alt="Minnesota lighthouse" class="location-pixel" />
-        </div>
+          <div class="image-wrapper">
+            <img src="/minnesota-pixel.png" alt="Minnesota lighthouse" class="location-pixel minnesota-image" />
+          </div>
       </div>
       
       <div class="timeline">
         <div class="timeline-track"></div>
-        <div class="timeline-dashes"></div>
         
         <div class="timeline-point" data-position="0">
           <div class="timeline-dot"></div>
@@ -224,9 +260,9 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
       
       <!-- Rutgers pixel art on the right -->
       <div class="location-marker location-marker-right">
-        <div class="image-wrapper">
-          <img src="/rutgers-pixel.png" alt="Rutgers building" class="location-pixel" />
-        </div>
+          <div class="image-wrapper">
+            <img src="/rutgers-pixel.png" alt="Rutgers building" class="location-pixel rutgers-image" />
+          </div>
       </div>
     </div>
   </div>
@@ -283,7 +319,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
     position: absolute;
     width: 40px;
     height: 40px;
-    top: 15%;
+    top: 10%;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url('/bird_frame1.png');
@@ -319,7 +355,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
       margin-top: 0px;
     }
     100% {
-      margin-top: -15px;
+      margin-top: -10px;
     }
   }
   
@@ -341,8 +377,8 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    width: 75%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 800px;
     z-index: 3;
     display: flex;
     align-items: center;
@@ -355,7 +391,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
     width: 100%;
     margin: 0 auto;
     flex: 1;
-    margin: 0 90px;
+    margin: 0 120px;
   }
   
   .timeline-track {
@@ -371,29 +407,16 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
     box-shadow: 0 0 8px rgba(213, 184, 255, 0.5);
   }
   
-  .timeline-dashes {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    transform: translateY(-50%);
-    z-index: 2;
-    background-image: linear-gradient(to right, transparent 50%, rgba(255, 255, 255, 0.5) 50%);
-    background-size: 15px 1px;
-    background-repeat: repeat-x;
-    opacity: 0.6;
-  }
-  
   .timeline-point {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 2;
+    z-index: 5; /* Ensure points are above the line */
   }
   
   .timeline-point[data-position="0"] {
     left: 0%;
+    transform: translateX(-50%) translateY(-50%);
   }
   
   .timeline-point[data-position="100"] {
@@ -415,18 +438,18 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
   
   .timeline-content {
     position: absolute;
-    top: -30px;
-    left: 0;
+    top: -35px;
+    left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #8a63d2;
-    opacity: 0.9;
-    transition: all 0.3s ease;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.9);
-    padding-bottom: 6px;
+    font-size: 0.9rem;
+    color: #5a3d8a;
+    font-weight: 500;
+    white-space: nowrap;
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 10;
   }
   
   .timeline-point:hover .timeline-dot {
@@ -442,8 +465,8 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
   
   /* Location marker styling with fixed sizing */
   .location-marker {
-    width: 70px;
-    height: 70px;
+    width: 120px;
+    height: 120px;
     flex-shrink: 0;
     position: relative;
     z-index: 10;
@@ -456,12 +479,12 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
 
   /* New wrapper to maintain consistent sizing */
   .image-wrapper {
-    width: 70px;
-    height: 70px;
+    width: 120px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .location-marker-left {
@@ -469,14 +492,14 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
   }
 
   .location-marker-right {
-    margin-left: 15px;
+    margin-left: 30px;
     background-color: transparent;
   }
 
   /* Fixed image styling for consistent size */
   .location-pixel {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 150%;
+    max-height: 150%;
     width: auto;
     height: auto;
     image-rendering: pixelated;
@@ -484,6 +507,19 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
     transition: transform 0.3s ease;
     object-fit: contain;
     mix-blend-mode: multiply;
+    transform: scale(1.1);
+    margin: 5px 0;
+  }
+  
+  .minnesota-image {
+    position: relative;
+    top: 52px;
+  }
+  
+  .rutgers-image {
+    transform: scale(0.9);
+    position: relative;
+    top: 20px;
   }
 
   .location-marker:hover {
@@ -494,64 +530,79 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
   @media (max-width: 768px) {
     .skyline-container {
       height: 180px;
-      width: 95%;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      padding-top: 20px; /* Add padding to raise content */
     }
     
     .timeline-container {
-      width: 90%;
-      bottom: 40px;
+      width: 95%;
+      max-width: 600px;
+      bottom: 30px; /* Raise the timeline higher */
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0 10px;
+      box-sizing: border-box;
+      position: absolute;
+      top: 40%; /* Position from top instead of bottom */
     }
     
     .timeline {
       height: 25px;
-      margin: 0 60px;
-    }
-    
-    .timeline-content {
-      font-size: 0.75rem;
-      top: -28px;
-    }
-    
-    .pixel-bird {
-      width: 25px;
-      height: 25px;
+      margin: 0 40px;
+      position: relative;
+      width: calc(100% - 80px);
     }
     
     .location-marker, .image-wrapper {
-      width: 50px;
-      height: 50px;
+      width: 42px;
+      height: 42px;
+      position: relative;
+      top: -15px; /* Raise the images */
     }
-    /* Simple fix for timeline labels */
-@media (max-width: 768px) {
-  /* Increase the width of the timeline container to give more space */
-  .timeline-container {
-    width: 100%;
+    
+    .location-marker-left {
+      left: 0;
+      top: -15px; /* Raise Minnesota image 20px higher (was 5px) */
+    }
+    
+    .location-marker-right {
+      right: 0;
+      top: 5px;
+    }
+    
+    .timeline-content {
+      font-size: 0.65rem;
+      top: -40px; /* Adjust text position to match raised images */
+      width: auto;
+      min-width: 100px;
+      max-width: 120px;
+      white-space: nowrap;
+      background-color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      line-height: 1.2;
+    }
+    
+    .timeline-point[data-position="0"] {
+      left: 0;
+      transform: translateX(-50%); /* Center the point on the line start */
+    }
+    
+    .timeline-point[data-position="100"] {
+      left: 100%; /* Position at the end */
+      transform: translateX(-50%); /* Center the point on the line end */
+    }
+    
+    .pixel-bird {
+      width: 44px;
+      height: 44px;
+      top: 15%; /* Raised from 25% to 15% to make the bird fly higher */
+    }
   }
-  
-  /* Make the timeline markers display different background colors */
-  .timeline-content {
-    /* Ensure text shows fully */
-    width: auto;
-    min-width: 120px; /* Wider to fit "New Brunswick, NJ" */
-    max-width: 120px; /* Limit max width */
-    white-space: normal; /* Allow wrapping if needed */
-    background-color: white;
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-size: 0.7rem; /* Slightly smaller font */
-    box-shadow: 0 1px 3px rgba(138, 99, 210, 0.3);
-  }
-  
-  /* Position the left marker further left */
-  .timeline-point[data-position="0"] {
-    left: -5%; /* Move slightly left of 0% */
-  }
-  
-  /* Position the right marker further right */
-  .timeline-point[data-position="100"] {
-    left: 105%; /* Move slightly right of 100% */
-  }
-}
 </style>
       
       <!-- Portfolio Section -->
