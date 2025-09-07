@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
+import DecryptedText from '../components/DecryptedText';
 ---
 
 <!doctype html>
@@ -13,6 +14,31 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/css/regular.css">
     
     <style>
+      /* Decrypted text styles */
+      .revealed {
+        color: #8a63d2;
+        text-shadow: 0 0 5px rgba(138, 99, 210, 0.3);
+        transition: all 0.3s ease;
+      }
+      
+      .encrypted {
+        color: #d9a7ff;
+        opacity: 0.8;
+        text-shadow: 0 0 3px rgba(138, 99, 210, 0.5);
+      }
+      
+      .pixel-heading .revealed {
+        color: #5a3d8a;
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+      
+      .subtitle .revealed {
+        color: #8a63d2;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      
       /* Petal styling for different types */
       .petal {
         position: absolute;
@@ -107,9 +133,43 @@ import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../consts';
               
               <div class="education-section">
                 <div>
-                  <h3>Rutgers University - New Brunswick</h3>
-                  <p> Bachelor's Degree in Computer Science</p>
-                  <p> Minor in Critical Intelligence and Japanese</p>
+                  <h3>
+                    <DecryptedText 
+                      client:load
+                      text="Rutgers University - New Brunswick"
+                      speed={100}
+                      maxIterations={30}
+                      animateOn="view"
+                      className="revealed"
+                      encryptedClassName="encrypted"
+                    />
+                  </h3>
+                  <p>
+                    <DecryptedText 
+                      client:load
+                      text="Bachelor's Degree in Computer Science"
+                      speed={100}
+                      maxIterations={30}
+                      animateOn="view"
+                      revealDirection="center"
+                      className="revealed"
+                      encryptedClassName="encrypted"
+                      style="display: block; margin: 0.5rem 0;"
+                    />
+                  </p>
+                  <p>
+                    <DecryptedText 
+                      client:load
+                      text="Minor in Critical Intelligence and Japanese"
+                      speed={100}
+                      maxIterations={30}
+                      animateOn="view"
+                      revealDirection="end"
+                      className="revealed"
+                      encryptedClassName="encrypted"
+                      style="display: block;"
+                    />
+                  </p>
                 </div>
               </div>
 
